@@ -8,4 +8,6 @@ import com.example.bank.model.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	Optional<Customer> findByCustomerIdAndCustomerPassword(Integer customerId, String customerPassword);
+	
+	Optional<Customer> findByCustomerNameAndCustomerPassword(String customerName, String passwordCustomer);
 }

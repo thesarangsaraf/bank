@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.bank.dto.CustomerDto;
 import com.example.bank.dto.TransactionDto;
 import com.example.bank.model.Customer;
 import com.example.bank.repository.CustomerRepository;
@@ -13,6 +14,15 @@ import com.example.bank.repository.CustomerRepository;
 public class CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
+
+	public CustomerDto verify(CustomerDto customerDto) {
+		Optional<Customer> optionalCustomer = customerRepository
+				.findByCustomerIdAndCustomerPassword(customerDto.getCustomerId(), customerDto.getCustomerPassword());
+		if (optionalCustomer.isPresent()) {
+			return customerDto;
+		}
+		return null;
+	}
 
 	public String withDraw(TransactionDto transactionDto) {
 		Optional<Customer> optionalCustomer = customerRepository.findById(transactionDto.getCustomerId());
@@ -37,5 +47,15 @@ public class CustomerService {
 		customer.setCustomerBalance(customer.getCustomerBalance() + transactionDto.getTransactionAmount());
 		customerRepository.save(customer);
 		return "success";
+	}
+
+	public String register(Customer customer) {
+		customerRepository.save(customer);
+		Optional<Customer> optionalCustomer = customerRepository
+				.findByCustomerNameAndCustomerPassword(customer.getCustomerName(), customer.getCustomerPassword());
+		if (!optionalCustomer.isPresent()) {
+			return "Failed to create";
+		}
+		return optionalCustomer.get().toString();
 	}
 }

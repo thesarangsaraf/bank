@@ -7,18 +7,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.bank.dto.CustomerDto;
 import com.example.bank.dto.TransactionDto;
+import com.example.bank.model.Customer;
 import com.example.bank.repository.CustomerRepository;
 import com.example.bank.service.CustomerService;
-import com.example.bank.service.LoginService;
 
 @Controller
 public class CustomerController {
 
 	@Autowired
 	CustomerRepository customerRepository;
-
-	@Autowired
-	LoginService loginService;
 
 	@Autowired
 	CustomerService customerService;
@@ -36,9 +33,14 @@ public class CustomerController {
 
 	@PostMapping(value = "/login")
 	public String login(CustomerDto customerDto) {
-		if (loginService.verify(customerDto) == null) {
+		if (customerService.verify(customerDto) == null) {
 			return "invalid";
 		}
 		return "home";
+	}
+
+	@PostMapping(value = "/register")
+	public String register(Customer customer) {
+		return customerService.register(customer);
 	}
 }

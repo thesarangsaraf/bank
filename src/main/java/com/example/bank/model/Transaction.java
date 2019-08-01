@@ -61,7 +61,7 @@ public class Transaction {
 	@Override
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", transactionDate=" + transactionDate
-				+ ", transactionAmoun=" + transactionAmount + ", transactionType=" + transactionType + ", customer="
+				+ ", transactionAmount=" + transactionAmount + ", transactionType=" + transactionType + ", customer="
 				+ customer + "]";
 	}
 

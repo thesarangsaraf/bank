@@ -1,8 +1,11 @@
 package com.example.bank.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.bank.dto.CustomerDto;
@@ -20,20 +23,23 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 
+	TransactionController transactionController = new TransactionController();
+
 	@ResponseBody
 	@PostMapping(value = "/withdraw")
-	public String withDraw(TransactionDto transactionDto) {
+	public String withDraw(@RequestBody TransactionDto transactionDto) {
 		return customerService.withDraw(transactionDto);
 	}
 
 	@ResponseBody
 	@PostMapping(value = "/deposit")
-	public String deposit(TransactionDto transactionDto) {
+	public String deposit(@RequestBody TransactionDto transactionDto) {
+		transactionController.depositLog(transactionDto);
 		return customerService.deposit(transactionDto);
 	}
 
 	@PostMapping(value = "/login")
-	public String login(CustomerDto customerDto) {
+	public String login(@RequestBody CustomerDto customerDto) {
 		if (customerService.verify(customerDto) == null) {
 			return "invalid";
 		}
@@ -42,7 +48,8 @@ public class CustomerController {
 
 	@ResponseBody
 	@PostMapping(value = "/register")
-	public String register(Customer customer) {
+	public String register(@Valid Customer customer) {
+		System.out.println("From controller " + customer.toString());
 		return customerService.register(customer);
 	}
 }

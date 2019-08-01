@@ -50,9 +50,11 @@ public class CustomerService {
 	}
 
 	public String register(Customer customer) {
+		System.out.println("from client " + customer.toString());
 		customerRepository.save(customer);
 		Optional<Customer> optionalCustomer = customerRepository
 				.findByCustomerNameAndCustomerPassword(customer.getCustomerName(), customer.getCustomerPassword());
+		System.out.println(optionalCustomer.get().toString());
 		if (!optionalCustomer.isPresent()) {
 			return "Failed to create";
 		}

@@ -58,4 +58,11 @@ public class Transaction {
 		this.transactionType = transactionType;
 	}
 
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", transactionDate=" + transactionDate
+				+ ", transactionAmount=" + transactionAmount + ", transactionType=" + transactionType + ", customer="
+				+ customer + "]";
+	}
+
 }

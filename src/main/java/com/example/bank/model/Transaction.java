@@ -64,5 +64,4 @@ public class Transaction {
 				+ ", transactionAmount=" + transactionAmount + ", transactionType=" + transactionType + ", customer="
 				+ customer + "]";
 	}
-
 }

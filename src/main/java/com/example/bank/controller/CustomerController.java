@@ -26,6 +26,7 @@ public class CustomerController {
 		return customerService.withDraw(transactionDto);
 	}
 
+	@ResponseBody
 	@PostMapping(value = "/deposit")
 	public String deposit(TransactionDto transactionDto) {
 		return customerService.deposit(transactionDto);
@@ -39,6 +40,7 @@ public class CustomerController {
 		return "home";
 	}
 
+	@ResponseBody
 	@PostMapping(value = "/register")
 	public String register(Customer customer) {
 		return customerService.register(customer);

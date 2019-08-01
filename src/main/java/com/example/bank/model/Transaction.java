@@ -2,11 +2,29 @@ package com.example.bank.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Transaction {
-	Integer transactionId;
-	Date transactionDate;
-	Integer transactionAmount;
-	String transactionType;
+	@Id
+	private Integer transactionId;
+	private Date transactionDate;
+	private Integer transactionAmount;
+	private String transactionType;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Customer customer;
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
 	public Integer getTransactionId() {
 		return transactionId;
@@ -43,6 +61,8 @@ public class Transaction {
 	@Override
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", transactionDate=" + transactionDate
-				+ ", transactionAmount=" + transactionAmount + ", transactionType=" + transactionType + "]";
+				+ ", transactionAmount=" + transactionAmount + ", transactionType=" + transactionType + ", customer="
+				+ customer + "]";
 	}
+
 }

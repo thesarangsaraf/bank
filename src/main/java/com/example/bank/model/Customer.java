@@ -1,15 +1,31 @@
 package com.example.bank.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Customer {
 	@Id
-	Integer customerId;
-	String customerName;
-	String customerPassword;
-	Integer customerBalance;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer customerId;
+	private String customerName;
+	private String customerPassword;
+	private Integer customerBalance;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+	private Transaction transactions;
+
+	public Transaction getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(Transaction transactions) {
+		this.transactions = transactions;
+	}
 
 	public Integer getCustomerId() {
 		return customerId;
@@ -46,6 +62,8 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerPassword="
-				+ customerPassword + ", customerBalance=" + customerBalance + "]";
+				+ customerPassword + ", customerBalance=" + customerBalance + ", transactions=" + transactions + "]";
 	}
+
+	
 }

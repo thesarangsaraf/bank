@@ -29,4 +29,9 @@ public class TransactionDto {
 		this.transactionType = transactionType;
 	}
 
+	@Override
+	public String toString() {
+		return "TransactionDto [customerId=" + customerId + ", transactionAmount=" + transactionAmount
+				+ ", transactionType=" + transactionType + "]";
+	}
 }

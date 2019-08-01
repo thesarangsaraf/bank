@@ -37,6 +37,5 @@ public class CustomerService {
 		customer.setCustomerBalance(customer.getCustomerBalance() + transactionDto.getTransactionAmount());
 		customerRepository.save(customer);
 		return "success";
-
 	}
 }

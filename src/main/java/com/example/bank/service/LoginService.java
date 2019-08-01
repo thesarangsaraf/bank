@@ -13,7 +13,7 @@ import com.example.bank.repository.CustomerRepository;
 public class LoginService {
 
 	@Autowired
-	CustomerRepository customerRepository;
+	private CustomerRepository customerRepository;
 
 	public CustomerDto verify(CustomerDto customerDto) {
 		Optional<Customer> optionalCustomer = customerRepository

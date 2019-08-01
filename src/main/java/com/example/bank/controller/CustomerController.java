@@ -29,6 +29,11 @@ public class CustomerController {
 		return customerService.withDraw(transactionDto);
 	}
 
+	@PostMapping(value = "/deposit")
+	public String deposit(TransactionDto transactionDto) {
+		return customerService.deposit(transactionDto);
+	}
+
 	@PostMapping(value = "/login")
 	public String login(CustomerDto customerDto) {
 		if (loginService.verify(customerDto) == null) {

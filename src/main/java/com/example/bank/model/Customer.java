@@ -1,5 +1,7 @@
 package com.example.bank.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +19,13 @@ public class Customer {
 	private Integer customerBalance;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-	private Transaction transactions;
+	private List<Transaction> transactions;
 
-	public Transaction getTransactions() {
+	public List<Transaction> getTransactions() {
 		return transactions;
 	}
 
-	public void setTransactions(Transaction transactions) {
+	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
 

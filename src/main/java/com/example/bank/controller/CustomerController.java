@@ -23,8 +23,6 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 
-	TransactionController transactionController = new TransactionController();
-
 	@ResponseBody
 	@PostMapping(value = "/withdraw")
 	public String withDraw(@RequestBody TransactionDto transactionDto) {
@@ -34,7 +32,7 @@ public class CustomerController {
 	@ResponseBody
 	@PostMapping(value = "/deposit")
 	public String deposit(@RequestBody TransactionDto transactionDto) {
-		transactionController.depositLog(transactionDto);
+		customerService.depositLog(transactionDto);
 		return customerService.deposit(transactionDto);
 	}
 

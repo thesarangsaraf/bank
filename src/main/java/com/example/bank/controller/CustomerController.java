@@ -35,7 +35,7 @@ public class CustomerController {
 		return customerService.deposit(transactionDto);
 	}
 
-	@PostMapping(value = "/login")
+	@PostMapping(value = "/home")
 	public String login(@RequestBody CustomerDto customerDto) {
 		if (customerService.verify(customerDto) == null) {
 			return "invalid";

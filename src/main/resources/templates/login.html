@@ -5,18 +5,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="" method="get">
+	<form action="#" th:action="@{/home}" th:object="${CustomerDto}"
+		method="post">
 		<div>
-			UserName<input type="text" placeholder="CustomerId"
-				required="required"><br>
-			<br> PassWord<input type="password" placeholder="Password"
-				required="required"><br>
-			<br>
-			<br>
-			<br> Submit<input type="button"> <br>
-			<br>
-			<br>
-			<a href="NewUser">link</a>
+			UserName<input type="text" value="customerId"
+				placeholder="CustomerId" required="required"><br> <br>
+			PassWord<input type="password" value="customerPassword"
+				placeholder="Password" required="required"><br> <br>
+			<br> <br> Submit<input type="submit"> <br> <br>
+			<br> <a href="register">NewUser??</a>
 		</div>
 	</form>
 </body>

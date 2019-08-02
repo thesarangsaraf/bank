@@ -8,9 +8,9 @@
 	<form action="#" th:action="@{/home}" th:object="${CustomerDto}"
 		method="post">
 		<div>
-			UserName<input type="text" value="customerId"
+			UserName<input type="text" name="customerId"
 				placeholder="CustomerId" required="required"><br> <br>
-			PassWord<input type="password" value="customerPassword"
+			PassWord<input type="password" name="customerPassword"
 				placeholder="Password" required="required"><br> <br>
 			<br> <br> Submit<input type="submit"> <br> <br>
 			<br> <a href="register">NewUser??</a>

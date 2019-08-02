@@ -66,7 +66,7 @@ public class CustomerService {
 		return optionalCustomer.get().toString();
 	}
 
-	public void depositLog(TransactionDto transactionDto) {
+	public void transactionLog(TransactionDto transactionDto) {
 		Transaction transaction = new Transaction();
 		transaction.setTransactionDate(new Date(System.currentTimeMillis()));
 		transaction.setTransactionAmount(transactionDto.getTransactionAmount());

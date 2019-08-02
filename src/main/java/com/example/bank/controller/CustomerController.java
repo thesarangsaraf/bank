@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.bank.dto.CustomerDto;
 import com.example.bank.dto.TransactionDto;
+import com.example.bank.model.Customer;
 import com.example.bank.repository.CustomerRepository;
 import com.example.bank.service.CustomerService;
 
@@ -27,17 +28,18 @@ public class CustomerController {
 	public String login() {
 		return "login";
 	}
-	
+
 	@ResponseBody
 	@PostMapping(value = "/withdraw")
-	public String withDraw(@RequestBody TransactionDto transactionDto) {
+	public String withDraw(@Valid TransactionDto transactionDto) {
+		customerService.transactionLog(transactionDto);
 		return customerService.withDraw(transactionDto);
 	}
 
 	@ResponseBody
 	@PostMapping(value = "/deposit")
 	public String deposit(@RequestBody TransactionDto transactionDto) {
-		customerService.depositLog(transactionDto);
+		customerService.transactionLog(transactionDto);
 		return customerService.deposit(transactionDto);
 	}
 
@@ -50,8 +52,9 @@ public class CustomerController {
 		return "home";
 	}
 
-	@GetMapping(value = "/register", produces = "text/html")
-	public String register() {
-		return "register";
+	@PostMapping(value = "/register", produces = "text/html")
+	public String register(@Valid Customer customer) {
+		customerService.register(customer);
+		return "successful";
 	}
 }

@@ -4,7 +4,23 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-	<h1>Welcome home</h1>
+<body><h1>Withdraw</h1>
+	<form action="#" th:action="@{/withdraw}" th:object="${TransactionDto}"
+		method="post">
+		<input type="number" name="customerId" placeholder="Enter id"><br>
+		<input type="number" name="transactionAmount"
+			placeholder="Enter amount"><br> <input type="text"
+			name="transactionType" value="withdraw"><br> <input
+			type="submit">
+	</form><br><br>
+<h1>Deposit</h1>
+	<form action="#" th:action="@{/deposit}" th:object="${TransactionDto}"
+		method="post">
+		<input type="number" name="customerId" placeholder="Enter id"><br>
+		<input type="number" name="transactionAmount"
+			placeholder="Enter amount"><br> <input type="text"
+			name="transactionType" value="deposit"><br> <input
+			type="submit">
+	</form>
 </body>
 </html>

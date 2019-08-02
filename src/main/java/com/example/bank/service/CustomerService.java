@@ -15,7 +15,7 @@ import com.example.bank.repository.TransactionRepository;
 
 @Service
 public class CustomerService {
-	
+
 	@Autowired
 	private CustomerRepository customerRepository;
 

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Customer registration</title>
+</head>
+<body>
+	<form action="#" th:action="@{/register}" th:object="${Customer}"
+		method="post">
+		<input type="number" name="customerId" placeholder="Enter id"><br>
+		<input type="text" name="customerName" placeholder="Enter name"><br>
+		<input type="password" name="customerPassword"
+			placeholder="Enter password"><br> <input type="number"
+			name="customerBalance" placeholder="Enter balance"><br>
+		<input type="submit">Submit
+	</form>
+</body>
+</html>

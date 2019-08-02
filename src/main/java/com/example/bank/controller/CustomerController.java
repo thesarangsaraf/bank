@@ -1,16 +1,15 @@
 package com.example.bank.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.bank.dto.CustomerDto;
 import com.example.bank.dto.TransactionDto;
-import com.example.bank.model.Customer;
 import com.example.bank.repository.CustomerRepository;
 import com.example.bank.service.CustomerService;
 
@@ -44,10 +43,8 @@ public class CustomerController {
 		return "home";
 	}
 
-	@ResponseBody
-	@PostMapping(value = "/register")
-	public String register(@Valid Customer customer) {
-		System.out.println("From controller " + customer.toString());
-		return customerService.register(customer);
+	@GetMapping(value = "/register", produces = "text/html")
+	public String register() {
+		return "register";
 	}
 }

@@ -5,6 +5,8 @@
 <title>Customer registration</title>
 </head>
 <body>
+<link rel="stylesheet" type="text/css" href="appearance.css" />
+<h3 align="center" >Customer registration</h3>
 	<form action="#" th:action="@{/register}" th:object="${Customer}"
 		method="post">
 		<input type="number" name="customerId" placeholder="Enter id"><br>
@@ -12,7 +14,7 @@
 		<input type="password" name="customerPassword"
 			placeholder="Enter password"><br> <input type="number"
 			name="customerBalance" placeholder="Enter balance"><br>
-		<input type="submit">Submit
+		<input type="submit">
 	</form>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Product Manager</title>
+</head>
+<body>
+	<div align="center">
+		<h1>welcome to shubhRang</h1>
+		<br />
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Account No</th>
+					<th>Name</th>
+					<th>Balance</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="customer : ${custList}" >
+					<td th:text="${customer.customerId}">Account No</td>
+					<td th:text="${customer.customerName}">Name</td>
+					<td th:text="${customer.customerBalance}">Balance</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<a href= "/hm">Transaction</a>
+</body>

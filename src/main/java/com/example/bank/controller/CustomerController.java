@@ -1,13 +1,16 @@
 package com.example.bank.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.bank.dto.CustomerDto;
 import com.example.bank.dto.TransactionDto;
@@ -29,27 +32,39 @@ public class CustomerController {
 		return "login";
 	}
 
-	@ResponseBody
+	
 	@PostMapping(value = "/withdraw")
 	public String withDraw(@Valid TransactionDto transactionDto) {
 		customerService.transactionLog(transactionDto);
-		return customerService.withDraw(transactionDto);
+		customerService.withDraw(transactionDto);
+		return "successful";
 	}
 
-	@ResponseBody
+	@GetMapping(value = "/newregister")
+	public String newRegister() {
+		return "register";
+	}
+	
 	@PostMapping(value = "/deposit")
-	public String deposit(@RequestBody TransactionDto transactionDto) {
+	public String deposit(@Valid TransactionDto transactionDto) {
 		customerService.transactionLog(transactionDto);
-		return customerService.deposit(transactionDto);
+		customerService.deposit(transactionDto);
+		return "successful";
 	}
 
 	@PostMapping(value = "/home")
-	public String login(@Valid CustomerDto customerDto) {
+	public String login(@Valid CustomerDto customerDto, Model model) {
 		System.out.println(customerDto.toString());
 		if (customerService.verify(customerDto) == null) {
 			return "invalid";
 		}
-		return "home";
+		Optional<Customer> optionalCust = customerRepository.findById(customerDto.getCustomerId());
+		List<Customer> custList = new ArrayList<Customer>();
+		custList.add(optionalCust.get());
+		
+		model.addAttribute("custList", custList);
+
+		return "try";
 	}
 
 	@PostMapping(value = "/register", produces = "text/html")
@@ -57,4 +72,12 @@ public class CustomerController {
 		customerService.register(customer);
 		return "successful";
 	}
+	
+	@GetMapping(value = "/hm")
+	public String goToHome() {
+		return "home";
+	}
+	
+	
+	
 }

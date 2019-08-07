@@ -2,19 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Customer Login ShubhRang Bank</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
-<body>
-	<form action="#" th:action="@{/home}" th:object="${CustomerDto}"
-		method="post">
-		<div>
-			UserName<input type="text" name="customerId"
-				placeholder="CustomerId" required="required"><br> <br>
-			PassWord<input type="password" name="customerPassword"
-				placeholder="Password" required="required"><br> <br>
-			<br> <br> Submit<input type="submit"> <br> <br>
-			<br> <a href="register">NewUser??</a>
-		</div>
-	</form>
+<body><h1>Welcome To ShubhRang Bank!!</h1>
+<form action="#login" th:action="@{/home}" th:object="${CustomerDto}"
+method="post">
+<div>
+UserName <input type="text" name="customerId"
+placeholder="CustomerId" required="required"><br> <br>
+PassWord <input type="password" name="customerPassword"
+placeholder="Password" required="required"><br> <br>
+<br> <br> Submit <input type="submit"> <br> <br>
+<br> <a href="/newregister">NewUser??</a>
+</div>
+</form>
+<h2>HTML Image</h2>
+<img src="pic_trulli.jpg" alt="Trulli" width="500" height="333">
 </body>
 </html>
